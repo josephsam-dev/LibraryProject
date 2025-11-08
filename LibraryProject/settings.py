@@ -4,16 +4,22 @@ Django settings for LibraryProject project.
 
 from pathlib import Path
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
+# -------------------------
+# Paths
+# -------------------------
 BASE_DIR = Path(__file__).resolve().parent.parent
-TEMPLATES_DIR = BASE_DIR / 'templates'  # ✅ Added global templates folder path
+TEMPLATES_DIR = BASE_DIR / 'templates'  # optional global templates folder
 
-# Quick-start development settings - unsuitable for production
+# -------------------------
+# Security
+# -------------------------
 SECRET_KEY = 'django-insecure-uuubv9jova84bdziv5r2ard^$^opj%%!ij87+j9dx=@%iuptn$'
 DEBUG = True
 ALLOWED_HOSTS = []
 
-# Application definition
+# -------------------------
+# Installed apps
+# -------------------------
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -21,11 +27,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
-    # ✅ Add your app here
-    'relationship_app',
+    'relationship_app',  # your app
 ]
 
+# -------------------------
+# Middleware
+# -------------------------
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -36,17 +43,23 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+# -------------------------
+# URL configuration
+# -------------------------
 ROOT_URLCONF = 'LibraryProject.urls'
 
+# -------------------------
+# Templates
+# -------------------------
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        # ✅ This line now includes the global templates folder
-        'DIRS': [TEMPLATES_DIR],
-        'APP_DIRS': True,
+        'DIRS': [TEMPLATES_DIR],  # global templates folder
+        'APP_DIRS': True,          # looks inside each app's templates folder
         'OPTIONS': {
             'context_processors': [
-                'django.template.context_processors.request',
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',  # needed for auth
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
@@ -54,9 +67,14 @@ TEMPLATES = [
     },
 ]
 
+# -------------------------
+# WSGI
+# -------------------------
 WSGI_APPLICATION = 'LibraryProject.wsgi.application'
 
+# -------------------------
 # Database
+# -------------------------
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -64,7 +82,9 @@ DATABASES = {
     }
 }
 
+# -------------------------
 # Password validation
+# -------------------------
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
     {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
@@ -72,14 +92,27 @@ AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
 ]
 
+# -------------------------
 # Internationalization
+# -------------------------
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_TZ = True
 
+# -------------------------
 # Static files
+# -------------------------
 STATIC_URL = 'static/'
 
-# Default primary key field type
+# -------------------------
+# Default primary key
+# -------------------------
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# -------------------------
+# Authentication redirects
+# -------------------------
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'
