@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Libraries</title>
+</head>
+<body>
+    <h1>Libraries</h1>
+    <a href="{% url 'add_library' %}">Add New Library</a>
+    <ul>
+        {% for library in libraries %}
+            <li>
+                <a href="{% url 'library_detail' library.pk %}">
+                    {{ library.name }} - {{ library.location }}
+                </a>
+            </li>
+        {% empty %}
+            <li>No libraries available.</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'home' %}">Back to Home</a>
+</body>
+</html>

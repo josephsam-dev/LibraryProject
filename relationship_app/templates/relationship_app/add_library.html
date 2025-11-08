@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Library</title>
+</head>
+<body>
+    <h1>Add Library</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Add Library</button>
+    </form>
+    <a href="{% url 'list_libraries' %}">Back to Libraries List</a>
+</body>
+</html>
