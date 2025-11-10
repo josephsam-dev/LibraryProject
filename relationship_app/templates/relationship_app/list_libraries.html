@@ -1,18 +1,28 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Libraries</title>
+    <meta charset="UTF-8">
+    <title>All Libraries</title>
 </head>
 <body>
-    <h1>Libraries</h1>
+    <h1>All Libraries</h1>
     <a href="{% url 'add_library' %}">Add New Library</a>
-    <ul>
+    <table border="1" cellpadding="5">
+        <tr>
+            <th>Name</th>
+            <th>Location</th>
+        </tr>
         {% for library in libraries %}
-            <li>{{ library.name }} - {{ library.location }}</li>
+        <tr>
+            <td>{{ library.name }}</td>
+            <td>{{ library.location }}</td>
+        </tr>
         {% empty %}
-            <li>No libraries available.</li>
+        <tr>
+            <td colspan="2">No libraries found.</td>
+        </tr>
         {% endfor %}
-    </ul>
+    </table>
     <a href="{% url 'home' %}">Back to Home</a>
 </body>
 </html>
