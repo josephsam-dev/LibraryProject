@@ -1,15 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Library Home</title>
-</head>
-<body>
-    <h1>Welcome to the Library!</h1>
-    <ul>
-        <li><a href="{% url 'list_books' %}">View Books</a></li>
-        <li><a href="{% url 'register' %}">Register</a></li>
-        <li><a href="{% url 'login' %}">Login</a></li>
-    </ul>
-</body>
-</html>
+<h1>Welcome to Library Project</h1>
+<ul>
+    <li><a href="{% url 'list_books' %}">Books</a></li>
+    <li><a href="{% url 'list_libraries' %}">Libraries</a></li>
+    <li><a href="{% url 'register' %}">Register</a></li>
+    <li><a href="{% url 'login' %}">Login</a></li>
+    <li><a href="{% url 'logout' %}">Logout</a></li>
+</ul>

@@ -16,18 +16,16 @@ TEMPLATES_DIR = BASE_DIR / 'templates'  # optional global templates folder
 SECRET_KEY = 'django-insecure-uuubv9jova84bdziv5r2ard^$^opj%%!ij87+j9dx=@%iuptn$'
 DEBUG = True
 ALLOWED_HOSTS = []
-
-# -------------------------
-# Installed apps
-# -------------------------
 INSTALLED_APPS = [
-    'django.contrib.admin',
+    'django.contrib.admin',          # required for admin.site
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'relationship_app',  # your app
+
+    # your app(s)
+    'relationship_app',
 ]
 
 # -------------------------

@@ -1,16 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Add Library</title>
-</head>
-<body>
-    <h1>Add Library</h1>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Save</button>
-    </form>
-    <a href="{% url 'list_libraries' %}">Back to Libraries</a>
-</body>
-</html>
+<h1>Libraries</h1>
+<a href="{% url 'add_library' %}">Add Library</a>
+<ul>
+{% for library in libraries %}
+    <li><a href="{% url 'library_detail' library.pk %}">{{ library.name }}</a></li>
+{% empty %}
+    <li>No libraries yet</li>
+{% endfor %}
+</ul>
+<a href="{% url 'home' %}">Home</a>
